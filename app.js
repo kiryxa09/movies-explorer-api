@@ -12,10 +12,11 @@ const {
 const auth = require('./middlewares/auth');
 const errorHandler = require('./middlewares/errorHandler');
 const NotFoundError = require('./errors/not-found-err');
+require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const corsOptions = {
-  origin: ['', 'http://localhost:3000'],
+  origin: ['https://movies.kiryxa09.nomoredomainsicu.ru', 'http://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   allowedHeaders: 'Content-Type',
