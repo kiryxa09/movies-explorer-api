@@ -16,7 +16,7 @@ require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const corsOptions = {
-  origin: ['https://movies.kiryxa09.nomoredomainsicu.ru', 'http://localhost:3000'],
+  origin: ['https://movies.kiryxa09.nomoredomainsrocks.ru', 'http://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   allowedHeaders: 'Content-Type',
@@ -33,7 +33,7 @@ const limiter = rateLimit({
 
 // Apply the rate limiting middleware to all requests
 
-const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
+const { PORT = 3001, DB_URL = 'mongodb://127.0.0.1:27017/bitfilmsdb' } = process.env;
 
 const app = express();
 app.use(cors(corsOptions));
