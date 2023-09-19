@@ -1,6 +1,6 @@
 # movies-explorer-api
 Ссылка на репозиторий: https://github.com/kiryxa09/movies-explorer-api
-Ссылка на api: 
+Ссылка на api: https://api.movies.kiryxa09.nomoredomainsrocks.ru/
 
 В данной проектной работе используется ряд технологий.
 1. express.js (helmet, ratelimiter, cors, Joi, celebrate)
