@@ -49,6 +49,8 @@ const updateProfile = (req, res, next) => {
     .catch((e) => {
       if (e instanceof mongoose.Error.ValidationError) {
         return next(new BadReqError('Переданы некорректные данные'));
+      } if (e.code === 11000) {
+        return next(new StatusConflictError('Email уже используется'));
       } if (e instanceof mongoose.Error.DocumentNotFoundError) {
         return next(new NotFoundError('Пользователь с таким id не найден'));
       }

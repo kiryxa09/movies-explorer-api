@@ -60,7 +60,7 @@ app.post('/signup', celebrate({
     name: Joi.string().min(2).max(30),
   }),
 }), createUser);
-app.post('/signout', (req, res) => {
+app.post('/signout', auth, (req, res) => {
   res.clearCookie('jwt');
   res.send({ message: 'cookie cleared' });
 });

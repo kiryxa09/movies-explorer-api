@@ -7,7 +7,17 @@ const ForbiddenError = require('../errors/forbid-err');
 
 const getMovies = (req, res, next) => {
   Movie.find({})
-    .then((movies) => res.send({ movies }))
+    .then((movies) => {
+      const myMovies = [];
+      movies.forEach((movie) => {
+        const ownerId = movie.owner.toString();
+        if (ownerId === req.user._id) {
+          myMovies.push(movie);
+        }
+        return myMovies;
+      });
+      res.send({ myMovies });
+    })
     .catch((e) => {
       if (e instanceof mongoose.Error.CastError) {
         return next(new BadReqError('Переданы некорректные данные'));
@@ -55,10 +65,9 @@ const deleteMovie = (req, res, next) => {
       if (ownerId !== req.user._id) {
         return next(new ForbiddenError('Карточка принадлежит не вам'));
       }
-      Movie.deleteOne(movie)
+      return Movie.deleteOne(movie)
         .orFail()
         .then(() => res.send({ movie }));
-      return true;
     })
     .catch((e) => {
       if (e instanceof mongoose.Error.DocumentNotFoundError) {
