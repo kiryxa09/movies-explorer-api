@@ -65,8 +65,8 @@ app.post('/signout', auth, (req, res) => {
   res.send({ message: 'cookie cleared' });
 });
 
-app.use('/movies', auth, require('./routes/movies'));
-app.use('/users', auth, require('./routes/users'));
+app.use('/movies', require('./routes/movies'));
+app.use('/users', require('./routes/users'));
 
 app.use((res, req, next) => {
   next(new NotFoundError('Страница не найдена'));
