@@ -30,7 +30,7 @@ const createMovie = (req, res, next) => {
   const {
     country, director, duration,
     year, description, image, trailerLink,
-    nameRU, nameEN, thumbnail, movieId,
+    nameRU, nameEN, thumbnail, id,
   } = req.body;
   const owner = req.user._id;
 
@@ -45,7 +45,7 @@ const createMovie = (req, res, next) => {
     thumbnail,
     nameRU,
     nameEN,
-    movieId,
+    id,
     owner,
   })
     .then((movie) => res.status(httpConstants.HTTP_STATUS_CREATED).send({ movie }))

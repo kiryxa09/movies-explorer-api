@@ -16,7 +16,7 @@ require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const corsOptions = {
-  origin: ['https://movies.kiryxa09.nomoredomainsrocks.ru', 'http://localhost:3000'],
+  origin: ['https://movies.kiryxa09.nomoredomainsrocks.ru', 'http://localhost:3000', 'localhost:3000', 'https://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   allowedHeaders: 'Content-Type',
